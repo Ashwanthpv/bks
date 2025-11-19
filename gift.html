@@ -1,0 +1,372 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Multi Slider Site</title>
+
+<link rel="icon" type="image/png" href="asset/Gemini_Generated_Image_mtmff0mtmff0mtmf.png">
+
+<style>
+/* RESET */
+*{
+  margin:0;
+  padding:0;
+  box-sizing:border-box;
+  font-family:Arial;
+}
+
+/* BODY */
+body{
+  background:#000;
+  color:white;
+  overflow-x:hidden;
+}
+
+/* NAVBAR */
+nav{
+  width:100%;
+  background:#000;
+  color:#fff;
+  padding:8px 15px;
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  position:fixed;
+  top:0;
+  left:0;
+  z-index:1000;
+  border-bottom:1px solid #222;
+}
+
+/* LOGO */
+nav .logo img{
+  height:140px;
+  width:auto;
+}
+
+@media(max-width:768px){
+  nav .logo img{
+    height:70px;
+  }
+}
+
+/* DESKTOP LINKS */
+nav ul{
+  list-style:none;
+  display:flex;
+  gap:25px;
+}
+
+nav ul li a{
+  color:white;
+  text-decoration:none;
+  font-size:18px;
+}
+
+/* HAMBURGER */
+.hamburger{
+  display:none;
+  flex-direction:column;
+  gap:5px;
+  cursor:pointer;
+  padding:8px;
+}
+
+.hamburger span{
+  width:28px;
+  height:3px;
+  background:white;
+  border-radius:5px;
+}
+
+@media(max-width:768px){
+  nav ul{display:none;}
+  .hamburger{display:flex;}
+}
+
+/* MOBILE MENU */
+.mobile-menu{
+  position:fixed;
+  top:0;
+  right:-260px;
+  width:260px;
+  height:100%;
+  background:#111;
+  padding-top:100px;
+  display:flex;
+  flex-direction:column;
+  gap:25px;
+  transition:0.35s ease;
+  z-index:2000;
+}
+
+.mobile-menu a{
+  color:#fff;
+  text-decoration:none;
+  font-size:22px;
+  padding:10px 20px;
+}
+
+/* SLIDER WRAPPER */
+.slider-container{
+  margin-top:160px;
+  width:95%;
+  max-width:1200px;
+  margin-left:auto;
+  margin-right:auto;
+  padding-bottom:50px;
+}
+
+/* TITLE */
+.slider-title{
+  font-size:45px;
+  margin:28px 0 15px 0;
+  text-align:center;
+  font-weight:900;
+  letter-spacing:1px;
+}
+
+@media(max-width:768px){
+  .slider-title{
+    font-size:28px;
+    margin-top:20px;
+  }
+}
+
+/* SLIDER BOX */
+.slider{
+  width:100%;
+  overflow:hidden;
+  position:relative;
+  margin-bottom:40px;
+}
+
+/* SLIDER TRACK – INFINITE SCROLL */
+.slider-track{
+  display:flex;
+  animation:scroll 18s linear infinite;
+}
+
+.slider-track img{
+  flex:0 0 100%;
+  width:100%;
+  object-fit:cover;
+  border-radius:12px;
+}
+
+/* MOBILE IMAGE FIX */
+@media(max-width:768px){
+  .slider-track img{
+    height:220px;
+    object-fit:cover;
+    border-radius:10px;
+  }
+}
+
+/* SMOOTH INFINITE ANIMATION */
+@keyframes scroll{
+  0%{ transform:translateX(0); }
+  100%{ transform:translateX(-100%); }
+}
+
+/* FOOTER */
+footer{
+  background:#111;
+  padding:40px 20px;
+  margin-top:50px;
+  border-top:1px solid #222;
+}
+
+.footer-container{
+  max-width:1200px;
+  margin:auto;
+  display:flex;
+  justify-content:space-between;
+  flex-wrap:wrap;
+  gap:25px;
+}
+
+.footer-box{
+  flex:1;
+  min-width:230px;
+}
+
+.footer-title{
+  font-size:22px;
+  font-weight:700;
+  margin-bottom:12px;
+}
+
+.footer-box p{
+  font-size:16px;
+  opacity:0.85;
+  line-height:1.5;
+}
+
+.social-icons{
+  display:flex;
+  gap:18px;
+  margin-top:10px;
+}
+
+.social-icons img{
+  width:33px;
+  height:33px;
+  filter:brightness(0) invert(1);
+  cursor:pointer;
+  transition:0.3s;
+}
+
+.social-icons img:hover{
+  transform:scale(1.1);
+}
+
+/* MOBILE FOOTER */
+@media(max-width:768px){
+  .footer-container{
+    flex-direction:column;
+    text-align:center;
+  }
+  .social-icons{
+    justify-content:center;
+  }
+}
+</style>
+
+<script>
+function openMenu(){
+  document.getElementById("mobileMenu").style.right="0";
+}
+function closeMenu(){
+  document.getElementById("mobileMenu").style.right="-260px";
+}
+</script>
+
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <div class="logo">
+    <img src="asset/Gemini_Generated_Image_mtmff0mtmff0mtmf.png" alt="Logo">
+  </div>
+
+  <ul>
+    <li><a href="imdex.html">Home</a></li>
+    <li><a href="about.html">About</a></li>
+    <li><a href="imdex.html">contact</a></li>
+  </ul>
+
+  <div class="hamburger" onclick="openMenu()">
+    <span></span><span></span><span></span>
+  </div>
+</nav>
+
+<!-- MOBILE MENU -->
+<div id="mobileMenu" class="mobile-menu">
+  <a href="imdex.html" onclick="closeMenu()">Home</a>
+  <a href="about.html" onclick="closeMenu()">About</a>
+  <a href="imdex.html" onclick="closeMenu()">Contact</a>
+</div>
+
+<!-- SLIDERS -->
+<div class="slider-container">
+
+  <!-- OFFICE -->
+  <div class="slider-title">office and stationery gift</div>
+  <div class="slider">
+    <div class="slider-track">
+      <img src="asset/office (1).png">
+      <img src="asset/office (2).png">
+      <img src="asset/office.png">
+      <img src="asset/office (1).png">
+      <img src="asset/office (2).png">
+      <img src="asset/office.png">
+    </div>
+  </div>
+
+  <!-- DRINKWARE -->
+  <div class="slider-title">drinkware</div>
+  <div class="slider">
+    <div class="slider-track">
+      <img src="asset/cup (1).png">
+      <img src="asset/cup (2).png">
+      <img src="asset/cup (3).png">
+      <img src="asset/cup (1).png">
+      <img src="asset/cup (2).png">
+      <img src="asset/cup (3).png">
+    </div>
+  </div>
+
+  <!-- GADGETS -->
+  <div class="slider-title">gadgets</div>
+  <div class="slider">
+    <div class="slider-track">
+      <img src="asset/tech (1).png">
+      <img src="asset/tech (2).png">
+      <img src="asset/tech (3).png">
+      <img src="asset/tech (1).png">
+      <img src="asset/tech (2).png">
+      <img src="asset/tech (3).png">
+    </div>
+  </div>
+
+  <!-- CLOTHING -->
+  <div class="slider-title">clothing</div>
+  <div class="slider">
+    <div class="slider-track">
+      <img src="asset/dress (1).png">
+      <img src="asset/dress (2).png">
+      <img src="asset/dress (3).png">
+      <img src="asset/dress (1).png">
+      <img src="asset/dress (2).png">
+      <img src="asset/dress (3).png">
+    </div>
+  </div>
+
+  <!-- ECO -->
+  <div class="slider-title">eco friendly gifting</div>
+  <div class="slider">
+    <div class="slider-track">
+      <img src="asset/eco (1).png">
+      <img src="asset/eco (2).png">
+      <img src="asset/eco (3).png">
+      <img src="asset/eco (1).png">
+      <img src="asset/eco (2).png">
+      <img src="asset/eco (3).png">
+    </div>
+  </div>
+
+</div>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-container">
+
+    <div class="footer-box">
+      <div class="footer-title">📍 Location</div>
+      <p>Brookstone Gifts <br>
+         Begum complex, calicut,kerala, India</p>
+    </div>
+
+    <div class="footer-box">
+      <div class="footer-title">📞 Contact</div>
+      <p>Phone: +91 8714296644<br>
+         Email: brookstonegift@gmail.com</p>
+    </div>
+
+    <div class="footer-box">
+      <div class="footer-title"> Follow Us</div>
+      <div class="social-icons">
+        <a href="#"><img src="asset/i.png"></a>
+        <a href="#"><img src="asset/f.png"></a>
+        <a href="#"><img src="asset/w.png"></a>
+      </div>
+    </div>
+
+  </div>
+</footer>
+
+</body>
+</html>
