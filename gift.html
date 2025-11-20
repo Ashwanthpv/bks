@@ -68,16 +68,29 @@ nav ul li a{
 .hamburger{
   display:none;
   flex-direction:column;
-  gap:5px;
+  gap:6px;
   cursor:pointer;
-  padding:8px;
+  padding:10px;
+  transition:0.3s;
 }
 
 .hamburger span{
-  width:28px;
+  width:30px;
   height:3px;
   background:white;
   border-radius:5px;
+  transition:0.4s;
+}
+
+/* ANIMATION TO X */
+.hamburger.active span:nth-child(1){
+  transform:rotate(45deg) translate(6px, 7px);
+}
+.hamburger.active span:nth-child(2){
+  opacity:0;
+}
+.hamburger.active span:nth-child(3){
+  transform:rotate(-45deg) translate(6px, -7px);
 }
 
 @media(max-width:768px){
@@ -142,7 +155,7 @@ nav ul li a{
   margin-bottom:40px;
 }
 
-/* SLIDER TRACK – INFINITE SCROLL */
+/* TRACK SCROLL */
 .slider-track{
   display:flex;
   animation:scroll 18s linear infinite;
@@ -164,7 +177,7 @@ nav ul li a{
   }
 }
 
-/* SMOOTH INFINITE ANIMATION */
+/* ANIMATION */
 @keyframes scroll{
   0%{ transform:translateX(0); }
   100%{ transform:translateX(-100%); }
@@ -222,7 +235,6 @@ footer{
   transform:scale(1.1);
 }
 
-/* MOBILE FOOTER */
 @media(max-width:768px){
   .footer-container{
     flex-direction:column;
@@ -235,11 +247,19 @@ footer{
 </style>
 
 <script>
-function openMenu(){
-  document.getElementById("mobileMenu").style.right="0";
-}
-function closeMenu(){
-  document.getElementById("mobileMenu").style.right="-260px";
+function toggleMenu(){
+  const menu = document.getElementById("mobileMenu");
+  const burger = document.querySelector(".hamburger");
+
+  // Toggle X animation
+  burger.classList.toggle("active");
+
+  // Slide menu
+  if(menu.style.right === "0px"){
+    menu.style.right = "-260px";
+  } else {
+    menu.style.right = "0px";
+  }
 }
 </script>
 
@@ -255,25 +275,26 @@ function closeMenu(){
   <ul>
     <li><a href="index.html">Home</a></li>
     <li><a href="about.html">About</a></li>
-    <li><a href="index.html">contact</a></li>
+    <li><a href="index.html">Contact</a></li>
   </ul>
 
-  <div class="hamburger" onclick="openMenu()">
-    <span></span><span></span><span></span>
+  <div class="hamburger" onclick="toggleMenu()">
+    <span></span>
+    <span></span>
+    <span></span>
   </div>
 </nav>
 
 <!-- MOBILE MENU -->
 <div id="mobileMenu" class="mobile-menu">
-  <a href="index.html" onclick="closeMenu()">Home</a>
-  <a href="about.html" onclick="closeMenu()">About</a>
-  <a href="index.html" onclick="closeMenu()">Contact</a>
+  <a href="index.html" onclick="toggleMenu()">Home</a>
+  <a href="about.html" onclick="toggleMenu()">About</a>
+  <a href="index.html" onclick="toggleMenu()">Contact</a>
 </div>
 
-<!-- SLIDERS -->
+<!-- SLIDER SECTION -->
 <div class="slider-container">
 
-  <!-- OFFICE -->
   <div class="slider-title">office and stationery gift</div>
   <div class="slider">
     <div class="slider-track">
@@ -286,7 +307,6 @@ function closeMenu(){
     </div>
   </div>
 
-  <!-- DRINKWARE -->
   <div class="slider-title">drinkware</div>
   <div class="slider">
     <div class="slider-track">
@@ -299,7 +319,6 @@ function closeMenu(){
     </div>
   </div>
 
-  <!-- GADGETS -->
   <div class="slider-title">gadgets</div>
   <div class="slider">
     <div class="slider-track">
@@ -312,7 +331,6 @@ function closeMenu(){
     </div>
   </div>
 
-  <!-- CLOTHING -->
   <div class="slider-title">clothing</div>
   <div class="slider">
     <div class="slider-track">
@@ -325,7 +343,6 @@ function closeMenu(){
     </div>
   </div>
 
-  <!-- ECO -->
   <div class="slider-title">eco friendly gifting</div>
   <div class="slider">
     <div class="slider-track">
@@ -347,7 +364,7 @@ function closeMenu(){
     <div class="footer-box">
       <div class="footer-title">📍 Location</div>
       <p>Brookstone Gifts <br>
-         Begum complex, calicut,kerala, India</p>
+         Begum complex, Calicut, Kerala, India</p>
     </div>
 
     <div class="footer-box">
@@ -357,7 +374,7 @@ function closeMenu(){
     </div>
 
     <div class="footer-box">
-      <div class="footer-title"> Follow Us</div>
+      <div class="footer-title">Follow Us</div>
       <div class="social-icons">
         <a href="#"><img src="asset/i.png"></a>
         <a href="#"><img src="asset/f.png"></a>
