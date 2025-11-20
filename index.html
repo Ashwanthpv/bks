@@ -21,11 +21,6 @@ body{
   background:black;
   color:#fff;
   min-height:100vh;
-  display:flex;
-  flex-direction:column;
-  align-items:center;
-  justify-content:flex-start;
-  padding-top:100px;
 }
 
 /* ---------------- NAV ---------------- */
@@ -97,7 +92,6 @@ nav ul li a:hover{ color:var(--gold); }
     width:100%;
     flex-direction:column;
     background:#000;
-    padding:0;
     gap:0;
     max-height:0;
     overflow:hidden;
@@ -132,15 +126,19 @@ nav ul li a:hover{ color:var(--gold); }
 }
 
 /* ---------------- HERO ---------------- */
+main{
+  padding-top:110px;
+}
+
 .hero{
   width:100%;
   max-width:var(--max-width);
+  margin:auto;
   display:grid;
   grid-template-columns:1fr 1fr;
   gap:40px;
   align-items:center;
-  margin-bottom:70px;
-  padding:0 15px;
+  padding:0 20px;
 }
 
 .left{ padding:20px; }
@@ -169,11 +167,13 @@ h1{
   border-radius:4px;
   font-weight:600;
   text-decoration:none;
-  letter-spacing:0.5px;
-  margin-bottom:12px;
 }
 
-.note{ color:var(--muted); margin-top:12px; font-size:14px; }
+.note{
+  color:var(--muted);
+  margin-top:12px;
+  font-size:14px;
+}
 
 .right{
   display:flex;
@@ -183,7 +183,6 @@ h1{
 
 .img-frame{
   width:100%;
-  max-width:600px;
   border-radius:6px;
   overflow:hidden;
   box-shadow:0 10px 30px rgba(0,0,0,0.6);
@@ -193,7 +192,6 @@ h1{
 .img-frame img{
   width:100%;
   height:auto;
-  display:block;
 }
 
 /* Mobile Hero */
@@ -203,10 +201,8 @@ h1{
     text-align:center;
     gap:20px;
   }
-  .right{
-    order:-1;
-  }
-  h1{ font-size:36px; }
+  .right{ order:-1; }
+  h1{ font-size:38px; }
   .sub{ font-size:15px; }
   .left{ padding:10px; }
 }
@@ -217,7 +213,7 @@ h1{
   max-width:1200px;
   margin:60px auto;
   text-align:center;
-  padding:0 15px;
+  padding:0 20px;
 }
 
 #about h2{
@@ -235,31 +231,33 @@ h1{
 }
 
 /* ---------------- SLIDER ---------------- */
-.slider{ width:100%; overflow:hidden; padding:20px 0; }
+.slider{
+  width:100%;
+  overflow:hidden;
+  padding:20px 0;
+}
+
 .slide-track{
   display:flex;
-  width:calc(240px * 24);
   animation:scroll 40s linear infinite;
+  gap:12px;
 }
 
 .slide-track img{
   width:240px;
-  height:auto;
-  margin:0 12px;
   border-radius:6px;
-  box-shadow:0 6px 18px rgba(0,0,0,0.45);
-}
-
-@keyframes scroll{
-  from{ transform:translateX(0); }
-  to{ transform:translateX(calc(-240px * 12)); }
+  height:auto;
 }
 
 @media(max-width:600px){
   .slide-track img{
     width:150px;
-    margin:0 6px;
   }
+}
+
+@keyframes scroll{
+  from{ transform:translateX(0); }
+  to{ transform:translateX(-50%); }
 }
 
 /* ---------------- WHATSAPP FLOAT ---------------- */
@@ -274,6 +272,7 @@ h1{
   display:flex;
   align-items:center;
   justify-content:center;
+  z-index:999;
 }
 
 .whatsapp img{ width:34px; }
@@ -286,7 +285,6 @@ h1{
   padding:40px 20px;
   display:flex;
   justify-content:center;
-  margin-top:40px;
 }
 
 .footer-bottom-wrap{
@@ -300,12 +298,11 @@ h1{
 }
 
 .fb-logo img{ width:120px; }
-.fb-info h3{ font-size:20px; margin-bottom:6px; }
-.fb-line{ font-size:14px; margin:4px 0; }
 
 @media(max-width:800px){
   .footer-bottom-wrap{
     flex-direction:column;
+    text-align:center;
   }
   .fb-logo img{ width:100px; }
 }
@@ -339,7 +336,7 @@ function toggleMenu(){
 </script>
 
 <!-- HERO -->
-<main id="home" class="hero">
+<main class="hero">
   <aside class="right">
     <div class="img-frame">
       <img src="asset/Gemini_Generated_Image_mtmff0mtmff0mtmf.png" alt="gift image">
@@ -354,6 +351,7 @@ function toggleMenu(){
   </section>
 </main>
 
+<!-- ABOUT -->
 <section id="about">
   <h2>About Brookstone</h2>
   <p>We specialize in premium, memorable gifting experiences that strengthen business relationships.</p>
@@ -365,7 +363,8 @@ function toggleMenu(){
     <h2 style="text-align:center;margin-bottom:20px;">Our Gift Collection</h2>
     <div class="slider">
       <div class="slide-track">
-        <!-- (Your 24 images remain unchanged) -->
+
+        <!-- YOUR IMAGES (repeated for infinite scroll) -->
         <img src="asset/office (1).png" />
         <img src="asset/office.png" />
         <img src="asset/office (2).png" />
@@ -379,19 +378,8 @@ function toggleMenu(){
         <img src="asset/dress (2).png" />
         <img src="asset/dress (3).png" />
 
+        <!-- duplicate for smooth looping -->
         <img src="asset/office (1).png" />
-        <img src="asset/office.png" />
-        <img src="asset/office (2).png" />
-        <img src="asset/cup (1).png" />
-        <img src="asset/cup (2).png" />
-        <img src="asset/cup (3).png" />
-        <img src="asset/eco (1).png" />
-        <img src="asset/eco (2).png" />
-        <img src="asset/eco (3).png" />
-        <img src="asset/dress (1).png" />
-        <img src="asset/dress (2).png" />
-        <img src="asset/dress (3).png" />
-         <img src="asset/office (1).png" />
         <img src="asset/office.png" />
         <img src="asset/office (2).png" />
         <img src="asset/cup (1).png" />
@@ -404,18 +392,6 @@ function toggleMenu(){
         <img src="asset/dress (2).png" />
         <img src="asset/dress (3).png" />
 
-        <img src="asset/office (1).png" />
-        <img src="asset/office.png" />
-        <img src="asset/office (2).png" />
-        <img src="asset/cup (1).png" />
-        <img src="asset/cup (2).png" />
-        <img src="asset/cup (3).png" />
-        <img src="asset/eco (1).png" />
-        <img src="asset/eco (2).png" />
-        <img src="asset/eco (3).png" />
-        <img src="asset/dress (1).png" />
-        <img src="asset/dress (2).png" />
-        <img src="asset/dress (3).png" />
       </div>
     </div>
   </div>
